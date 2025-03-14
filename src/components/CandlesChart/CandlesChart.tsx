@@ -25,7 +25,7 @@ interface IProps {
   interval: string;
 }
 
-export const CandlesChart = ({ period, interval }: IProps) => {
+export const CandlesChart: React.FC<IProps> = ({ period, interval }) => {
   const dispatch: AppDispatch = useDispatch();
   const candlesDataHistorical = useSelector(selectCandles);
   const candlesDataNow: ITradeCandle[] = useSelector(selectCandlesNow);
@@ -34,8 +34,6 @@ export const CandlesChart = ({ period, interval }: IProps) => {
   const location = useLocation();
   const candlesData =
     location.pathname === '/' ? candlesDataNow : candlesDataHistorical;
-
-  // if (location.pathname === '/') console.log('now');
 
   useEffect(() => {
     if (chartRef.current) setWidth(chartRef.current.offsetWidth);

@@ -4,7 +4,7 @@ import { selectTrade } from '../../store/trades/selectors';
 import { ITradeData } from '../../types';
 import moment from 'moment';
 import * as S from './styled';
-import { CurrencyInfo } from '../CurrencyLogo/CurrencyInfo';
+import { CurrencyInfo } from '../CurrencyInfo';
 
 export const LastTrade = () => {
   const tradeData: ITradeData[] = useSelector(selectTrade);

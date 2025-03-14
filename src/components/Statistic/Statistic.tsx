@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes } from 'react-router';
 import { PHRASES } from '../../constants';
 import * as S from './styled';
 import { CandlesChart } from '../CandlesChart';
-import { CurrencyInfo } from '../CurrencyLogo/CurrencyInfo';
+import { CurrencyInfo } from '../CurrencyInfo';
 
 export const Statistic = () => {
   return (

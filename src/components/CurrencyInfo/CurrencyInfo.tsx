@@ -1,14 +1,14 @@
 import { useSelector } from 'react-redux';
-import { CurrencyLogo } from '../CurrencyLogo';
+import { CurrencyLogo } from '../CurrencyLogo/CurrencyLogo';
 import * as S from './styled';
-import { selectSelectedSymbol } from '../../../store/historicalTrades/selectors';
-import { currencyList } from '../../../constants';
+import { selectSelectedSymbol } from '../../store/historicalTrades/selectors';
+import { currencyList } from '../../constants';
 
 interface IProps {
   text?: string;
 }
 
-export const CurrencyInfo = ({ text }: IProps) => {
+export const CurrencyInfo: React.FC<IProps> = ({ text }) => {
   const selectedCurrency = useSelector(
     selectSelectedSymbol
   ) as keyof typeof currencyList;

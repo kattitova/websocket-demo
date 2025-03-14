@@ -4,6 +4,6 @@ interface IProps {
   name: string;
 }
 
-export const CurrencyLogo = ({ name }: IProps) => {
+export const CurrencyLogo: React.FC<IProps> = ({ name }) => {
   return <S.CurrencyLogo src={`./${name}.png`} alt={name} />;
 };

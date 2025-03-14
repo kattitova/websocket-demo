@@ -12,7 +12,12 @@ interface IProps {
   active: boolean;
 }
 
-export const CurrencyCard = ({ symbol, price, percent, active }: IProps) => {
+export const CurrencyCard: React.FC<IProps> = ({
+  symbol,
+  price,
+  percent,
+  active,
+}) => {
   const dispatch: AppDispatch = useDispatch();
 
   const percentColor = percent > 0 ? 'green' : 'red';
