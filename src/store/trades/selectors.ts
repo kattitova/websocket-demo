@@ -8,10 +8,10 @@ export const selectTrade = createSelector(
   (state) => state.trades
 );
 
-export const selectIsConnected = createSelector(
-  getTradeState,
-  (state) => state.isConnected
-);
+// export const selectIsConnected = createSelector(
+//   getTradeState,
+//   (state) => state.isConnected
+// );
 
 export const selectCandlesNow = createSelector(
   getTradeState,

@@ -18,8 +18,8 @@ export const CurrencyInfo: React.FC<IProps> = ({ text }) => {
     <S.Wrapper>
       <CurrencyLogo name={currencyName} />
       <div>
-        <p>{currencyName}</p>
-        {text && <span>{text}</span>}
+        <S.CurrencyTitle>{currencyName}</S.CurrencyTitle>
+        {text && <S.CurrencyText>{text}</S.CurrencyText>}
       </div>
     </S.Wrapper>
   );

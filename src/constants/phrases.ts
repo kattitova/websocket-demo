@@ -6,4 +6,5 @@ export const PHRASES = {
   TRADES_LIST: 'Trades List',
   PRICE: 'Price',
   QUANTITY: 'Quantity',
+  NOW: 'Now',
 };

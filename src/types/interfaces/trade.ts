@@ -1,9 +1,9 @@
 import { Time } from 'lightweight-charts';
 import {
-  UPDATE_CANDLES,
-  WEBSOCKET_CONNECTED,
-  WEBSOCKET_DATA_RECEIVED,
-  WEBSOCKET_DISCONNECTED,
+  CLEAR_CANDLES,
+  CLEAR_TRADES,
+  GET_TRADES,
+  SET_CANDLES,
 } from '../../store/trades/types';
 
 export interface ITradeData {
@@ -30,31 +30,28 @@ export interface ITradeCandle {
 export interface ITradeStore {
   trades: ITradeData[];
   candles: ITradeCandle[];
-  isConnected: boolean;
-  socket: WebSocket | null;
 }
 
-export interface IWebSocketConnectedAction {
-  type: typeof WEBSOCKET_CONNECTED;
-  payload: WebSocket | null;
-}
-
-export interface IWebSocketDisconnectedAction {
-  type: typeof WEBSOCKET_DISCONNECTED;
-}
-
-export interface IWebSocketDataReceivedAction {
-  type: typeof WEBSOCKET_DATA_RECEIVED;
+export interface IGetTradesAction {
+  type: typeof GET_TRADES;
   payload: ITradeData;
 }
 
-export interface IUpdateCandlesAction {
-  type: typeof UPDATE_CANDLES;
+export interface IClearTrades {
+  type: typeof CLEAR_TRADES;
+}
+
+export interface ISetCandlesAction {
+  type: typeof SET_CANDLES;
   payload: ITradeData;
 }
 
-export type IWebSocketActionTypes =
-  | IWebSocketConnectedAction
-  | IWebSocketDisconnectedAction
-  | IWebSocketDataReceivedAction
-  | IUpdateCandlesAction;
+export interface IClearCandlesAction {
+  type: typeof CLEAR_CANDLES;
+}
+
+export type ITradeActionTypes =
+  | IGetTradesAction
+  | IClearTrades
+  | ISetCandlesAction
+  | IClearCandlesAction;

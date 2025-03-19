@@ -1,42 +1,31 @@
 import moment from 'moment';
-import { ITradeStore, IWebSocketActionTypes } from '../../types';
-import {
-  UPDATE_CANDLES,
-  WEBSOCKET_CONNECTED,
-  WEBSOCKET_DATA_RECEIVED,
-  WEBSOCKET_DISCONNECTED,
-} from './types';
+import { ITradeActionTypes, ITradeStore } from '../../types';
+import { SET_CANDLES, GET_TRADES, CLEAR_TRADES, CLEAR_CANDLES } from './types';
 import { Time } from 'lightweight-charts';
 
 export const initialState: ITradeStore = {
   trades: [],
   candles: [],
-  isConnected: false,
-  socket: null,
 };
 
 export const tradeReducer = (
   state = initialState,
-  action: IWebSocketActionTypes
+  action: ITradeActionTypes
 ): ITradeStore => {
   switch (action.type) {
-    case WEBSOCKET_CONNECTED:
-      return { ...state, isConnected: true, socket: action.payload };
-    case WEBSOCKET_DISCONNECTED:
+    case GET_TRADES:
       return {
         ...state,
-        isConnected: false,
-        socket: null,
-        trades: [],
-        candles: [],
-      };
-    case WEBSOCKET_DATA_RECEIVED:
-      return {
-        ...state,
-        isConnected: true,
         trades: [...state.trades.slice(-49), action.payload],
       };
-    case UPDATE_CANDLES: {
+
+    case CLEAR_TRADES:
+      return { ...state, trades: [] };
+
+    case CLEAR_CANDLES:
+      return { ...state, candles: [] };
+
+    case SET_CANDLES: {
       const trade = action.payload;
       const tradeTime = moment(trade.T).startOf('minute').unix();
       const updatedCandles = [...state.candles];

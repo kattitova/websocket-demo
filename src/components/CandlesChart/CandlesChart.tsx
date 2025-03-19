@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import { AppDispatch } from '../../store/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { getData } from '../../store/historicalTrades/thunks';
-import { IApiChartParams, ITradeCandle } from '../../types';
+import { IApiChartParams } from '../../types';
 import { GET_CANDLES_HISTORY } from '../../constants';
 import { candlesParams } from '../../api/params';
 import {
@@ -19,6 +19,7 @@ import {
 } from '../../utils';
 import { useLocation } from 'react-router';
 import { selectCandlesNow } from '../../store/trades/selectors';
+import * as S from './styled';
 
 interface IProps {
   period: ICandlesChartPeriod;
@@ -28,12 +29,15 @@ interface IProps {
 export const CandlesChart: React.FC<IProps> = ({ period, interval }) => {
   const dispatch: AppDispatch = useDispatch();
   const candlesDataHistorical = useSelector(selectCandles);
-  const candlesDataNow: ITradeCandle[] = useSelector(selectCandlesNow);
+  const candlesDataNow = useSelector(selectCandlesNow);
   const chartRef = useRef<HTMLDivElement | null>(null);
   const [width, setWidth] = useState(0);
   const location = useLocation();
+
   const candlesData =
     location.pathname === '/' ? candlesDataNow : candlesDataHistorical;
+  // const candlesData =
+  //   location.pathname === '/' ? candlesDataHistorical : candlesDataHistorical;
 
   useEffect(() => {
     if (chartRef.current) setWidth(chartRef.current.offsetWidth);
@@ -78,5 +82,5 @@ export const CandlesChart: React.FC<IProps> = ({ period, interval }) => {
     return () => chart.remove();
   }, [candlesData]);
 
-  return <div ref={chartRef} style={{ width: '100%' }} />;
+  return <S.Wrapper ref={chartRef} />;
 };

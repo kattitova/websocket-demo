@@ -6,13 +6,13 @@ export const Wrapper = styled.div`
   gap: 10px;
   line-height: 1;
   text-transform: uppercase;
+`;
 
-  span {
-    font-size: 10px;
-    opacity: 0.8;
-  }
+export const CurrencyTitle = styled.p`
+  font-weight: 600;
+`;
 
-  p {
-    font-weight: 600;
-  }
+export const CurrencyText = styled.span`
+  font-size: 10px;
+  opacity: 0.8;
 `;

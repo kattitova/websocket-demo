@@ -12,14 +12,17 @@ import { IApiPricesParams } from './types';
 import * as S from './styled';
 import { CurrencyPrices } from './components/CurrencyPrices';
 import { Statistic } from './components/Statistic';
-import { getTradeData } from './store/trades/thunks';
+// import { getTradeData } from './store/trades/thunks';
 import { LastTrade } from './components/LastTrade';
 import { TradesList } from './components/TradesList';
+import { webSocketConnected } from './store/socket/actions';
+import { selectIsConnected } from './store/socket/selectors';
 
 function App() {
   const dispatch: AppDispatch = useDispatch();
   const symbols = useSelector(selectSymbols);
   const selectedSymbol = useSelector(selectSelectedSymbol);
+  const isConnected = useSelector(selectIsConnected);
 
   useEffect(() => {
     dispatch(
@@ -28,7 +31,8 @@ function App() {
   }, []);
 
   useEffect(() => {
-    dispatch(getTradeData(WS_URL(selectedSymbol)));
+    dispatch(webSocketConnected(WS_URL(selectedSymbol)));
+    //dispatch(getTradeData(WS_URL(selectedSymbol)));
   }, [selectedSymbol]);
 
   return (
@@ -42,8 +46,14 @@ function App() {
         <Statistic />
       </main>
       <aside>
-        <LastTrade />
-        <TradesList />
+        {isConnected ? (
+          <>
+            <LastTrade />
+            <TradesList />
+          </>
+        ) : (
+          <p>{PHRASES.LOADING}</p>
+        )}
       </aside>
     </S.App>
   );

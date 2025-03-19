@@ -35,12 +35,12 @@ export const CurrencyCard: React.FC<IProps> = ({
     >
       <CurrencyLogo name={name} />
       <S.CurrencyPrice>
-        <p>{name}</p>
-        <strong>{`$${price}`}</strong>
+        <S.CurrencyTitle>{name}</S.CurrencyTitle>
+        <S.CurrencyText>{`$${price}`}</S.CurrencyText>
       </S.CurrencyPrice>
-      <S.CurrencyPercent $color={percentColor}>
-        <p>{`${percent}%`}</p>
-        <img src={`${percentColor}-arrow.png`} alt='arrow' />
+      <S.CurrencyPercent>
+        <S.PercentTitle $color={percentColor}>{`${percent}%`}</S.PercentTitle>
+        <S.PercentImage src={`${percentColor}-arrow.png`} alt='arrow' />
       </S.CurrencyPercent>
     </S.CurrencyCard>
   );

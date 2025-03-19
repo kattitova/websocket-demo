@@ -5,11 +5,12 @@ export const App = styled.div`
   background-color: #100f14;
   border-radius: 10px;
   display: grid;
-  /* grid-template-columns: 1fr 0.3fr; */
+  grid-template-columns: 1fr 22%;
   grid-template-rows: 80px 1fr;
   grid-template-areas:
     'header aside'
     'main aside';
+  white-space: nowrap;
 
   header {
     grid-area: header;

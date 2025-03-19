@@ -6,15 +6,15 @@ export const Wrapper = styled.div`
   gap: 5px;
 `;
 
-export const StyledTable = styled.div`
+export const TableWrapper = styled.div`
   height: 600px;
   overflow-y: scroll;
   width: 100%;
+`;
 
-  table {
-    text-align: left;
-    width: 100%;
-  }
+export const Table = styled.table`
+  text-align: left;
+  width: 100%;
 
   th,
   tr:nth-child(even) {

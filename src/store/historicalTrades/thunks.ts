@@ -12,7 +12,6 @@ export const getData = <T>(
     dispatch(getDataRequest(key));
     try {
       const response = await api.getData(url, params);
-      console.log(response.data);
       dispatch(getDataSuccess({ data: response.data, key: key }));
     } catch (error) {
       dispatch(getDataFailure(`Error loading data ${error}`, key));

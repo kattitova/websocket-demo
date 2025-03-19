@@ -24,32 +24,32 @@ export const CurrencyPrice = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
-
-  p {
-    text-transform: capitalize;
-    font-size: 14px;
-  }
-
-  strong {
-    font-size: 20px;
-  }
 `;
 
-export const CurrencyPercent = styled.div<{ $color: string }>`
+export const CurrencyTitle = styled.p`
+  text-transform: capitalize;
+  font-size: 14px;
+`;
+
+export const CurrencyText = styled.strong`
+  font-size: 20px;
+`;
+
+export const CurrencyPercent = styled.div`
   display: flex;
   align-items: center;
   align-self: start;
   gap: 5px;
+`;
 
-  p {
-    font-size: 12px;
-    color: ${(props) => (props.$color === 'green' ? '#24b249' : '#f94f38')};
-  }
+export const PercentTitle = styled.p<{ $color: string }>`
+  font-size: 12px;
+  color: ${(props) => (props.$color === 'green' ? '#24b249' : '#f94f38')};
+`;
 
-  img {
-    background: none;
-    width: 20px;
-    height: 20px;
-    padding: 0;
-  }
+export const PercentImage = styled.img`
+  background: none;
+  width: 20px;
+  height: 20px;
+  padding: 0;
 `;

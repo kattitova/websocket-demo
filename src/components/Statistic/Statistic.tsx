@@ -8,20 +8,20 @@ export const Statistic = () => {
   return (
     <BrowserRouter>
       <S.Wrapper>
-        <header>
+        <S.Header>
           <h2>{PHRASES.STATISTIC}</h2>
-          <nav>
+          <S.Menu>
             <S.StyledLink to='/' end>
-              Now
+              {PHRASES.NOW}
             </S.StyledLink>
             <S.StyledLink to='/1d'>D</S.StyledLink>
             <S.StyledLink to='/1w'>W</S.StyledLink>
             <S.StyledLink to='/1m'>M</S.StyledLink>
             <S.StyledLink to='/3m'>3M</S.StyledLink>
             <S.StyledLink to='/6m'>6M</S.StyledLink>
-          </nav>
+          </S.Menu>
           <CurrencyInfo text='Selected Currency' />
-        </header>
+        </S.Header>
         <Routes>
           <Route
             path='/'
